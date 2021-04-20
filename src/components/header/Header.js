@@ -6,7 +6,7 @@ import "./Header.css";
 function Header() {
   return (
     <>
-      <header class="lg:px-16 px-6 bg-gray-700 flex flex-wrap items-center lg:py-0 py-2">
+      <header class="lg:px-16 px-6 bg-gray-500 flex flex-wrap items-center lg:py-0 py-2">
         <div class="flex-1 flex justify-between items-center">
           <Link to="/">
             <svg
