@@ -6,8 +6,8 @@ import "./Header.css";
 function Header() {
   return (
     <>
-      <header class="lg:px-16 px-6 bg-gray-500 flex flex-wrap items-center lg:py-0 py-2">
-        <div class="flex-1 flex justify-between items-center">
+      <header className="lg:px-16 px-6 bg-gray-500 flex flex-wrap items-center lg:py-0 py-2">
+        <div className="flex-1 flex justify-between items-center">
           <Link to="/">
             <svg
               height="36"
@@ -26,9 +26,9 @@ function Header() {
             </svg>
           </Link>
         </div>
-        <label for="menu-toggle" class="pointer-cursor lg:hidden block">
+        <label htmlFor="menu-toggle" className="pointer-cursor lg:hidden block">
           <svg
-            class="fill-current text-teal-300"
+            className="fill-current text-teal-300"
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -38,11 +38,11 @@ function Header() {
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
           </svg>
         </label>
-        <input class="hidden" type="checkbox" id="menu-toggle" />
+        <input className="hidden" type="checkbox" id="menu-toggle" />
 
-        <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+        <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
           <nav>
-            <ul class="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
+            <ul className="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
               <li>
                 <Link
                   className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
