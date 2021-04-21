@@ -8,10 +8,7 @@ function Login() {
           <div className="card bg-teal-300 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
           <div className="card bg-gray-500 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
           <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
-            <label
-              for=""
-              className="block mt-3 text-xl text-gray-700 text-center font-semibold"
-            >
+            <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Log in
             </label>
             <form method="#" action="#" className="mt-10">
@@ -33,7 +30,7 @@ function Login() {
 
               <div className="mt-7 flex">
                 <label
-                  for="remember_me"
+                  htmlFor="remember_me"
                   className="inline-flex items-center w-full cursor-pointer"
                 >
                   <input
@@ -42,7 +39,9 @@ function Login() {
                     className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="remember"
                   />
-                  <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                  <span className="ml-2 text-sm text-gray-600">
+                    Remember me
+                  </span>
                 </label>
 
                 <div className="w-full text-right">
