@@ -1,6 +1,7 @@
 import React from "react";
-import buildingimage from "../Images/building.jpg";
-function Card() {
+import image from "../images/building.jpg";
+
+function Card({ title, price, desc}) {
   return (
     <>
       <div className="flex-auto flex-col flow-root">
@@ -9,24 +10,21 @@ function Card() {
             <div className="md:flex-shrink-0">
               <img
                 className="h-48 w-full object-cover md:w-48"
-                src={buildingimage}
-                alt="Building"
+                src={image}
+                alt="Building Image"
               />
             </div>
             <div className="p-8">
               <div className="text-left uppercase tracking-wide text-sm text-teal-300 font-semibold">
-                building
+                {title}
               </div>
               <a
-                href="#"
                 className="text-left block mt-1 text-lg leading-tight font-medium text-teal-300"
               >
-                500 $
+                {price} $
               </a>
               <p className="mt-2 text-teal-300">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor.Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes.
+                {desc}
               </p>
             </div>
           </div>
