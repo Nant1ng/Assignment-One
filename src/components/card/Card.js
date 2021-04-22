@@ -1,42 +1,37 @@
 import React from "react";
-
+import buildingimage from "../Images/building.jpg";
 function Card() {
   return (
     <>
-      <body>
-        <div className="flex p-6">
-          <div className="flex-none w-44 relative">
-            <img
-              src="./city-night-awesome-buildings.jpg"
-              alt="Buildings"
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            />
+      <div className="flex-auto flex-col flow-root">
+        <div className="max-w-md mx-auto bg-gray-500 rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
+          <div className="md:flex">
+            <div className="md:flex-shrink-0">
+              <img
+                className="h-48 w-full object-cover md:w-48"
+                src={buildingimage}
+                alt="Building"
+              />
+            </div>
+            <div className="p-8">
+              <div className="text-left uppercase tracking-wide text-sm text-teal-300 font-semibold">
+                building
+              </div>
+              <a
+                href="#"
+                className="text-left block mt-1 text-lg leading-tight font-medium text-teal-300"
+              >
+                500 $
+              </a>
+              <p className="mt-2 text-teal-300">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor.Aenean massa. Cum sociis natoque
+                penatibus et magnis dis parturient montes.
+              </p>
+            </div>
           </div>
-          <form className="flex-auto pl-6">
-            <div className="flex flex-wrap items-baseline">
-              <h1 className="w-full flex-none font-semibold mb-2.5">
-                Building
-              </h1>
-              <div className="text-4xl leading-7 font-bold text-teal-300">
-                $39.00
-              </div>
-              <div className="text-sm font-medium text-gray-500 ml-3">
-                Available
-              </div>
-            </div>
-            <div className="flex space-x-3 mb-4 text-sm font-semibold">
-              <div className="flex-auto flex space-x-3">
-                <button
-                  className="w-1/2 flex items-center justify-center h-9 rounded-full bg-teal-300 text-gray-900"
-                  type="submit"
-                >
-                  Buy now
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
-      </body>
+      </div>
     </>
   );
 }

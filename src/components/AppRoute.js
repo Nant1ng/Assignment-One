@@ -9,8 +9,9 @@ export default function AppRoute() {
     <>
       <Router>
         <Header />
-        <Route path="/Log-in" component={Login} />
-        <Card />
+        <Route path="/Log-in" exact component={Login} />
+        <Route path="/" exact component={Card}/>
+        <Route path="/" exact component={Card}/>
       </Router>
     </>
   );
