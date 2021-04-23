@@ -14,8 +14,8 @@ function Register() {
             <form method="#" action="#" className="mt-10">
               <div>
                 <input
-                  type="username"
-                  placeholder=" Username"
+                  type="Fullname"
+                  placeholder=" Fullname"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
               </div>
@@ -24,6 +24,14 @@ function Register() {
                 <input
                   type="email"
                   placeholder=" Email"
+                  className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                />
+              </div>
+
+              <div className="mt-3">
+                <input
+                  type="username"
+                  placeholder=" Username"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
               </div>
