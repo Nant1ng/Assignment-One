@@ -11,7 +11,7 @@ function Card({ title, price, desc}) {
               <img
                 className="h-48 w-full object-cover md:w-48"
                 src={image}
-                alt="Building Image"
+                alt="Building"
               />
             </div>
             <div className="p-8">
