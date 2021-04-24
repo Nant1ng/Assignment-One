@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="w-full min-h-full flex items-center justify-center bg-gray-500 mt-10">
+    <div className="w-full min-h-max flex items-center justify-center bg-gray-500 mt-10">
       <div className="md:w-2/3 w-full px-4 text-white flex flex-col">
         <div className="w-full text-4xl font-bold">
           <h1 className="w-full md:w-2/3 mt-5">How can we help you? Get in touch</h1>
@@ -48,9 +48,6 @@ function Footer() {
             </a>
             <a className="hidden md:block cursor-pointer text-teal-300 hover:text-white uppercase">
               Why us
-            </a>
-            <a className="hidden md:block cursor-pointer text-teal-300 hover:text-white uppercase">
-              Contact
             </a>
             <div className="flex flex-row space-x-8 items-center justify-between">
               <a>
