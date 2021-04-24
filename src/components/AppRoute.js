@@ -14,12 +14,13 @@ export default function AppRoute() {
     <>
       <Router>
         <Header />
-
+        <div className="box-content h-screen overflow-auto">
         <Route path="/Log-in" exact component={Login} />
         <Route path="/Register" exact component={Register}></Route>
         <Route path="/Buy" exact component={Buy}></Route>
 
         <Route path="/" exact component={HomePage}></Route>
+        </div>
         <Footer />
       </Router>
     </>
