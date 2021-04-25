@@ -11,7 +11,7 @@ function Card({ title, price, desc}) {
           <div className="md:flex">
             <div className="md:flex-shrink-0">
               <img
-                className="h-48 w-full object-cover md:w-48"
+                className="h-full w-full object-cover md:w-48"
                 src={image}
                 alt="Building"
               />
@@ -28,7 +28,7 @@ function Card({ title, price, desc}) {
               <p className="mt-2 text-teal-300">
                 {desc}
               </p>
-              <Link className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center" to="">
+              <Link className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center" to="/checkout">
                 Buy
               </Link>
             </div>
