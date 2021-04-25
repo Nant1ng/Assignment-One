@@ -1,7 +1,7 @@
 import React from "react";
 import CardList from "../cardRent/CardList";
 
-function Buy() {
+function Rent() {
   return (
     <div>
       <CardList />
@@ -9,4 +9,4 @@ function Buy() {
   );
 }
 
-export default Buy;
+export default Rent;
