@@ -12,7 +12,7 @@ function Login() {
             <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Log in
             </label>
-            <form method="#" action="#" className="mt-10">
+            <form className="mt-10">
               <div>
                 <input
                   type="username"
@@ -46,12 +46,12 @@ function Login() {
                 </label>
 
                 <div className="w-full text-right">
-                  <a
+                  <Link
                     className="underline text-sm text-gray-600 hover:text-gray-900"
-                    href="#"
+                    to="/Forgotten-Password"
                   >
                     Forgot Your Password?
-                  </a>
+                  </Link>
                 </div>
               </div>
 
