@@ -28,7 +28,7 @@ function Card({ title, price, desc}) {
               <p className="mt-2 text-teal-300">
                 {desc}
               </p>
-              <Link className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center" to="">
+              <Link className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center" to="/Checkout">
                 Buy
               </Link>
             </div>
