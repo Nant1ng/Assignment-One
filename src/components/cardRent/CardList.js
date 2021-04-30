@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import buildingimage from "../images/building.jpg";
+import buildingimage from "../Images/building.jpg";
 
 const Propertys = [
   {

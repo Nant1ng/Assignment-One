@@ -1,34 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Card from "./Card";
-import buildingimage from "../images/building.jpg";
-
-const Propertys = [
-  {
-    Image: {buildingimage},
-    Title: "Title",
-    Desc:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.",
-    Price: 500,
-  },
-  {
-    Image: { buildingimage },
-    Title: "Title",
-    Desc:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.",
-    Price: 100,
-  },
-];
 
 function CardList() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get("http://localhost:1337/products");
+      console.log(response);
+
+      setProducts(response.data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div>
-      {Propertys.map((service) => {
+      {products.map((product) => {
         return (
           <Card
-            image={service.Image}
-            title={service.Title}
-            desc={service.Desc}
-            price={service.Price}
+            image={product.Image}
+            title={product.name}
+            desc={product.Descriptions}
+            price={product.Price}
           />
         );
       })}
