@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 function Card({ key, title, price, desc, image }) {
   return (
     <>
+      {console.log(key)}
       <div className="flex-auto flex-col flow-root">
-        {console.log(key)}
         <div className="max-w-md mx-auto bg-gray-500 rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
           <div className="md:flex">
             <div className="md:flex-shrink-0">
               <img
-                className="h-full w-full object-cover md:w-48"
-                src="http://localhost:1337/uploads/building_385a6ee243.jpg"
+                className="h-32 w-32 object-cover md:w-48"
+                src={`http://localhost:1337${image[0].url}`}
                 alt="Building"
               />
             </div>
