@@ -23,7 +23,7 @@ function Register() {
 
   function submitHandler(event) {
     event.preventDefault();
-    /* fungerar bara när jag har username inte name */
+
     axios
       .post("http://localhost:1337/auth/local/register", {
         username: EnteredName,
