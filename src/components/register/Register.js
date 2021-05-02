@@ -50,10 +50,12 @@ function Register() {
             <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Sign Up
             </label>
-            <form method="#" action="#" className="mt-10">
+            <form className="mt-10" onSubmit={submitHandler}>
               <div>
                 <input
                   type="Fullname"
+                  value={EnteredName}
+                  onChange={nameChangeHandler}
                   placeholder=" Fullname"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
@@ -62,6 +64,8 @@ function Register() {
               <div className="mt-3">
                 <input
                   type="email"
+                  value={EnteredEmail}
+                  onChange={emailChangeHandler}
                   placeholder=" Email"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
@@ -78,6 +82,8 @@ function Register() {
               <div className="mt-7">
                 <input
                   type="password"
+                  value={EnteredPassword}
+                  onChange={passwordChangeHandler}
                   placeholder=" Password"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
@@ -99,7 +105,10 @@ function Register() {
               </div>
 
               <div className="mt-7">
-                <button className="text-gray-900 bg-teal-300 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105">
+                <button
+                  type="submit"
+                  className="text-gray-900 bg-teal-300 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
+                >
                   Create Account
                 </button>
               </div>
