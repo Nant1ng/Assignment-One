@@ -1,8 +1,47 @@
-import React from 'react'
+import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Register() {
-    return (
-        <div className="font-sans">
+  const history = useHistory();
+
+  const [EnteredName, setName] = useState("");
+  const [EnteredEmail, setEmail] = useState("");
+  const [EnteredPassword, setPassword] = useState("");
+
+  function nameChangeHandler(event) {
+    setName(event.target.value);
+  }
+
+  function emailChangeHandler(event) {
+    setEmail(event.target.value);
+  }
+
+  function passwordChangeHandler(event) {
+    setPassword(event.target.value);
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+    /* fungerar bara när jag har username inte name */
+    axios
+      .post("http://localhost:1337/auth/local/register", {
+        username: EnteredName,
+        email: EnteredEmail,
+        password: EnteredPassword,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          history.push("/login");
+        }
+      })
+      .catch((error) => {
+        console.log("Error message: ", error);
+      });
+  }
+
+  return (
+    <div className="font-sans">
       <div className="relative min-h-screen flex flex-col sm:justify-center items-center">
         <div className="relative sm:max-w-sm w-full">
           <div className="card bg-teal-300 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
@@ -56,8 +95,7 @@ function Register() {
                 <label
                   htmlFor="remember_me"
                   className="inline-flex items-center w-full cursor-pointer"
-                >
-                </label>
+                ></label>
               </div>
 
               <div className="mt-7">
@@ -65,18 +103,12 @@ function Register() {
                   Create Account
                 </button>
               </div>
-
-              
-
-
-                
-              
             </form>
           </div>
         </div>
       </div>
     </div>
-    )
+  );
 }
 
-export default Register
+export default Register;
