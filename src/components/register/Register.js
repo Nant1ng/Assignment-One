@@ -53,8 +53,6 @@ function Register() {
               <div>
                 <input
                   type="Fullname"
-                  value={EnteredName}
-                  onChange={nameChangeHandler}
                   placeholder=" Fullname"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
@@ -73,6 +71,8 @@ function Register() {
               <div className="mt-3">
                 <input
                   type="username"
+                  value={EnteredName}
+                  onChange={nameChangeHandler}
                   placeholder=" Username"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
