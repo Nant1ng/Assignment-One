@@ -39,7 +39,6 @@ function Register() {
         console.log("Error message: ", error);
       });
   }
-
   return (
     <div className="font-sans">
       <div className="relative min-h-screen flex flex-col sm:justify-center items-center">
