@@ -30,9 +30,9 @@ function Register() {
         email: EnteredEmail,
         password: EnteredPassword,
       })
-      .then((res) => {
-        if (res.status === 200) {
-          history.push("/login");
+      .then((response) => {
+        if (response.status === 200) {
+          history.push("/");
         }
       })
       .catch((error) => {

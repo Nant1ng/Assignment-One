@@ -1,7 +1,40 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
+  const history = useHistory();
+
+  const [EnteredName, setName] = useState("");
+  const [EnteredPassword, setPassword] = useState("");
+
+  function nameChangeHandler(event) {
+    setName(event.target.value);
+  }
+
+  function passwordChangeHandler(event) {
+    setPassword(event.target.value);
+  }
+
+  async function submitHandler(event) {
+    event.preventDefault();
+
+    await axios
+      .post("http://localhost:1337/auth/local", {
+        identifier: EnteredName,
+        password: EnteredPassword,
+      })
+      .then((response) => {
+        localStorage.setItem("Token", response.data.jwt);
+        history.push("/");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log("Error Message: ", error);
+      });
+  }
+
   return (
     <div className="font-sans">
       <div className="relative min-h-screen flex flex-col sm:justify-center items-center">
@@ -12,10 +45,12 @@ function Login() {
             <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Log in
             </label>
-            <form className="mt-10">
+            <form className="mt-10" onSubmit={submitHandler}>
               <div>
                 <input
                   type="username"
+                  value={EnteredName}
+                  onChange={nameChangeHandler}
                   placeholder=" Username"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
@@ -24,6 +59,8 @@ function Login() {
               <div className="mt-7">
                 <input
                   type="password"
+                  value={EnteredPassword}
+                  onChange={passwordChangeHandler}
                   placeholder=" Password"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
@@ -70,10 +107,12 @@ function Login() {
               </div>
 
               <div className="flex mt-7 justify-center text-center w-full">
-                <Link className="bg-teal-300 border-none px-4 py-2 rounded-xl cursor-pointer text-gray-900 shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105" to="/Register">
+                <Link
+                  className="bg-teal-300 border-none px-4 py-2 rounded-xl cursor-pointer text-gray-900 shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"
+                  to="/Register"
+                >
                   Register
-                  </Link>
-                
+                </Link>
               </div>
             </form>
           </div>
