@@ -61,7 +61,7 @@ function Footer() {
               Why us
             </a> */}
             <div className="flex flex-row space-x-8 items-center justify-between">
-              <a>
+              <a alt="Facebook" href="https://sv-se.facebook.com/">
                 <svg
                   width="6"
                   height="12"
@@ -75,7 +75,7 @@ function Footer() {
                   />
                 </svg>
               </a>
-              <a>
+              <a alt="Instagram" href="https://www.instagram.com/">
                 <svg
                   width="12"
                   height="13"
