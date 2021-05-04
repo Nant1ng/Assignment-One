@@ -20,11 +20,11 @@ function Card({ title, price, desc}) {
               <div className="text-left uppercase tracking-wide text-sm text-teal-300 font-semibold">
                 {title}
               </div>
-              <a
+              <p
                 className="text-left block mt-1 text-lg leading-tight font-medium text-teal-300"
               >
                 {price} $ / per month
-              </a>
+              </p>
               <p className="mt-2 text-teal-300">
                 {desc}
               </p>
