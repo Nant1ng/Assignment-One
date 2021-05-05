@@ -21,7 +21,9 @@ function ForgottenPassword() {
       .catch((error) => {
         console.log("An error occurred:", error.response);
       });
+      console.log(EnteredEmail);  
   }
+
   return (
     <div className="font-sans">
       <div className="relative min-h-screen flex flex-col sm:justify-center items-center">
@@ -32,7 +34,7 @@ function ForgottenPassword() {
             <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Forgott Your Password
             </label>
-            <form className="mt-10" onSubmit={submitHandler}> 
+            <form className="mt-10" onSubmit={submitHandler}>
               <div>
                 <label
                   htmlFor="email"
