@@ -8,7 +8,7 @@ import Register from "./register/Register";
 import ForgottenPassword from "./forgottenPassword/ForgottenPassword";
 import ResetPassword from "./resetPassword/ResetPassword";
 
-import Buy from "./buy/Buy";
+import Buy from "./products/buy/Buy";
 import Rent from "./rent/Rent";
 import Checkout from "./checkout/Checkout";
 
