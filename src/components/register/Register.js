@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import useForm from "../formValidation/useForm";
+import validate from "../formValidation/validation";
+
 function Register() {
   const history = useHistory();
 
@@ -39,6 +42,16 @@ function Register() {
         console.log("Error message: ", error);
       });
   }
+   // Form Validation
+   const { handleChange, handleSubmit, values, errors } = useForm(
+    submit,
+    validate
+  );
+
+  function submit() {
+    console.log("Submitted Succesfully")
+  }
+
   return (
     <div className="font-sans">
       <div className="relative min-h-screen flex flex-col sm:justify-center items-center">
@@ -49,7 +62,7 @@ function Register() {
             <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Sign Up
             </label>
-            <form className="mt-10" onSubmit={submitHandler}>
+            <form className="mt-10" onSubmit={handleSubmit} noValidate>
               <div>
                 <input
                   type="Fullname"
@@ -61,11 +74,13 @@ function Register() {
               <div className="mt-3">
                 <input
                   type="email"
-                  value={EnteredEmail}
-                  onChange={emailChangeHandler}
+                  name="email"
+                  value={(values.email)}
+                  onChange={handleChange}
                   placeholder=" Email"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
+                {errors.email && <p className="text-red-600">{errors.email}</p>}
               </div>
 
               <div className="mt-3">
@@ -80,14 +95,15 @@ function Register() {
 
               <div className="mt-7">
                 <input
+                name="password"
                   type="password"
-                  value={EnteredPassword}
-                  onChange={passwordChangeHandler}
+                  value={values.password}
+                  onChange={handleChange}
                   placeholder=" Password"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
               </div>
-
+              {errors.password && <p className="text-red-600">{errors.password}</p>}
               <div className="1">
                 <input
                   type="password"

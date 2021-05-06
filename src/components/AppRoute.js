@@ -9,7 +9,7 @@ import ForgottenPassword from "./forgottenPassword/ForgottenPassword";
 import ResetPassword from "./resetPassword/ResetPassword";
 
 import Buy from "./products/buy/Buy";
-import Rent from "./rent/Rent";
+import Rent from "./products/rent/Rent";
 import Checkout from "./checkout/Checkout";
 
 import { Route, BrowserRouter as Router } from "react-router-dom";
