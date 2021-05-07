@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
+const token = localStorage.getItem("Token");
+let isLoggedIn = false;
+
+if (token !== null && token !== "") {
+  isLoggedIn = true;
+}
 
 function Header() {
   return (
@@ -40,7 +46,10 @@ function Header() {
         </label>
         <input className="hidden" type="checkbox" id="menu-toggle" />
 
-        <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+        <div
+          className="hidden lg:flex lg:items-center lg:w-auto w-full"
+          id="menu"
+        >
           <nav>
             <ul className="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
               <li>
@@ -67,7 +76,16 @@ function Header() {
                   Log in
                 </Link>
               </li>
-              {/* Log out? */}
+              {isLoggedIn ? 
+                <li>
+                  <Link
+                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                    to="/log-in"
+                  >
+                    Log out
+                  </Link>
+                </li>
+               : null}
             </ul>
           </nav>
         </div>
