@@ -6,11 +6,11 @@ import axios from "axios";
 function Login() {
   const history = useHistory();
 
-  const [EnteredName, setName] = useState("");
+  const [EnteredEmail, setEmail] = useState("");
   const [EnteredPassword, setPassword] = useState("");
 
-  function nameChangeHandler(event) {
-    setName(event.target.value);
+  function emailChangeHandler(event) {
+    setEmail(event.target.value);
   }
 
   function passwordChangeHandler(event) {
@@ -22,7 +22,7 @@ function Login() {
 
     await axios
       .post("http://localhost:1337/auth/local", {
-        identifier: EnteredName,
+        identifier: EnteredEmail,
         password: EnteredPassword,
       })
       .then((response) => {
@@ -49,8 +49,8 @@ function Login() {
               <div>
                 <input
                   type="username"
-                  value={EnteredName}
-                  onChange={nameChangeHandler}
+                  value={EnteredEmail}
+                  onChange={emailChangeHandler}
                   placeholder=" Username"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
