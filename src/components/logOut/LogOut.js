@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
 
 function LogOut() {
-    return (
-        <div>
-            
-        </div>
-    )
+  localStorage.removeItem("Token");
+  return <div></div>;
 }
 
-export default LogOut
+export default LogOut;
