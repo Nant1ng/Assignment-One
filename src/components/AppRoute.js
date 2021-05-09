@@ -7,6 +7,7 @@ import Login from "./login/LogIn";
 import Register from "./register/Register";
 import ForgottenPassword from "./forgottenPassword/ForgottenPassword";
 import ResetPassword from "./resetPassword/ResetPassword";
+import LogOut from "./logOut/LogOut";
 
 import Buy from "./products/buy/Buy";
 import Rent from "./products/rent/Rent";
@@ -26,7 +27,8 @@ export default function AppRoute() {
           <Route path="/Log-in" exact component={Login} />
           <Route path="/Register" exact component={Register} />
           <Route path="/Forgotten-Password" exact component={ForgottenPassword} />
-          <Route path="/Reset-Password" exact component={ResetPassword} /> 
+          <Route path="/Reset-Password" exact component={ResetPassword} />
+          <Route path="/Log-out" exact component={LogOut} />
  
           <Route path="/Buy" exact component={Buy} />
           <Route path="/Rent" exact component={Rent} />
