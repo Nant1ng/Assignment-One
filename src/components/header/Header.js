@@ -68,24 +68,35 @@ function Header() {
                   Rent
                 </Link>
               </li>
-              <li>
-                <Link
-                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                  to="/log-in"
-                >
-                  Log in
-                </Link>
-              </li>
-              {isLoggedIn ? 
+              {isLoggedIn ? (
                 <li>
                   <Link
                     className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                    to="/log-in"
+                    to="/Log-out"
                   >
                     Log out
                   </Link>
                 </li>
-               : null}
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                      to="/Log-in"
+                    >
+                      Log in
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                      to="/Register"
+                    >
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>
