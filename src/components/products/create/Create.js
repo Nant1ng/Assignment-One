@@ -28,9 +28,9 @@ function Create() {
 
     axios
       .post("http://localhost:1337/products", {
-        title: EnteredTitle,
-        description: EnteredDescription,
-        price: EnteredPrice,
+        name: EnteredTitle,
+        Descriptions: EnteredDescription,
+        Price: EnteredPrice,
       })
       .then((response) => {
         console.log(response.data);
@@ -40,11 +40,11 @@ function Create() {
         data.append("files", EnteredImage);
         data.append("ref", "product");
         data.append("refId", response.data.id);
-        data.append("field", "img");
+        data.append("field", "Image");
 
         axios
           .post("http://localhost:1337/upload", data)
-          .then((image) => console.log(image))
+          .then((Image) => console.log(Image))
           .catch((error) => console.log(error));
       })
       .catch((error) => {
