@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +8,8 @@ function Login() {
 
   const [EnteredEmail, setEmail] = useState("");
   const [EnteredPassword, setPassword] = useState("");
+  const [JWT, setJWT] = useState("");
+  const [UserId, setUserId] = useState("");
 
   function emailChangeHandler(event) {
     setEmail(event.target.value);
@@ -16,6 +18,18 @@ function Login() {
   function passwordChangeHandler(event) {
     setPassword(event.target.value);
   }
+
+  useEffect(
+    () => {
+      const jwt = localStorage.getItem("Token");
+      setJWT(jwt);
+
+      const userid = localStorage.getItem("UserId");
+      setUserId(userid);
+    },
+    [JWT],
+    [UserId]
+  );
 
   async function submitHandler(event) {
     event.preventDefault();
