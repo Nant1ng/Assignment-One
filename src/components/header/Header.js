@@ -3,13 +3,21 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 const token = localStorage.getItem("Token");
-let isLoggedIn = false;
+  let isLoggedIn = false;
 
-if (token !== null && token !== "") {
-  isLoggedIn = true;
-}
+  if (token !== null && token !== "") {
+    isLoggedIn = true;
+  }
 
 function Header() {
+  // const [JWT, setJWT] = useState(null);
+
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem("Token")
+  //   setJWT(jwt)
+    
+  // }, [JWT])
+
   return (
     <>
       <header className="lg:px-16 px-6 bg-gray-500 flex flex-wrap items-center lg:py-0 py-2">
