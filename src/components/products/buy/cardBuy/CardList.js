@@ -10,7 +10,7 @@ function CardList() {
     () => {
       const fetchProducts = async () => {
         const response = await axios.get(
-          `http://localhost:1337/products?_limit=${loadPage}`
+          `http://localhost:1337/buy-products?_limit=${loadPage}`
         );
         console.log(response);
 
@@ -40,14 +40,14 @@ function CardList() {
 
   return (
     <div>
-      {products.map((product) => {
+      {products.map((BuyProduct) => {
         return (
           <Card
-            key={product.id}
-            image={product.Image}
-            title={product.name}
-            desc={product.Descriptions}
-            price={product.Price}
+            key={BuyProduct.id}
+            image={BuyProduct.Image}
+            title={BuyProduct.Title}
+            desc={BuyProduct.Description}
+            price={BuyProduct.Price}
           />
         );
       })}
