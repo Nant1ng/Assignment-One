@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import useForm from "../formValidation/useForm";
 import validate from "../formValidation/validation";
-
+/* Måste göra en funktion som anropar två funktioner för att få onChange att göra två saker. */
 function Register() {
   const history = useHistory();
 
