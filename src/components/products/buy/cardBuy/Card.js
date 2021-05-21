@@ -1,9 +1,18 @@
-import React from "react";
-// import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
 
 function Card({ title, price, desc, image }) {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [EnteredName, setName] = useState("");
+  const [EnteredEmail, setEmail] = useState("");
+  const [EnteredAddress, setAddress] = useState("");
+  const [EnteredCity, setCity] = useState("");
+  const [EnteredCountry, setCountry] = useState("");
+  const [EnteredZip, setZip] = useState("");
+
+  /*const userid = localStorage,getItem('userid');*/
+
   Modal.setAppElement("#root");
 
   const customStyles = {
@@ -16,7 +25,43 @@ function Card({ title, price, desc, image }) {
       transform: "translate(-50%, -50%)",
     },
   };
-  
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function nameChangeHandler(event) {
+    setName(event.target.value);
+  }
+
+  function emailChangeHandler(event) {
+    setEmail(event.target.value);
+  }
+
+  function addressChangeHandler(event) {
+    setAddress(event.target.value);
+  }
+
+  function cityChangeHandler(event) {
+    setCity(event.target.value);
+  }
+
+  function countryChangeHandler(event) {
+    setCountry(event.target.value);
+  }
+
+  function zipChangeHandler(event) {
+    setZip(event.target.value);
+  }
+
+  function submitHandler(event) {
+    console.log("HHHHHHHAAAAAAAAYYYYYYYE")
+  }
+
   return (
     <>
       <div className="flex-auto flex-col flow-root">
@@ -37,14 +82,130 @@ function Card({ title, price, desc, image }) {
                 {price} $
               </p>
               <p className="mt-2 text-teal-300">{desc}</p>
-              {/*<Link */}
               <button
                 className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
-                to="/Checkout"
+                onClick={openModal}
               >
                 Buy
               </button>
-              {/*</Link> */}
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+              >
+                <button onClick={closeModal}>X</button>
+                <div className="leading-loose flex justify-center pt-4">
+                  <form className="max-w-xl m-2 p-5 bg-white rounded shadow-xl" onSubmit={submitHandler}>
+                    <p className="text-gray-800 font-medium">
+                      Customer Information
+                    </p>
+                    <div className="">
+                      <label
+                        className="block text-left text-sm text-gray-00"
+                      >
+                        Name
+                      </label>
+                      <input
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                        placeholder="Your Name"
+                      />
+                    </div>
+                    <div className="mt-2">
+                      <label
+                        className="block text-left text-sm text-gray-600"
+                      >
+                        Email
+                      </label>
+                      <input
+                        className="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded"
+                        placeholder="Your Email"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div className="mt-2">
+                      <label
+                        className=" block text-left text-sm text-gray-600"
+                      >
+                        Address
+                      </label>
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="Street"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div className="mt-2">
+                      <label
+                        className=" text-sm text-left block text-gray-600"
+                        
+                      >
+                        City
+                      </label>
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="City"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div className="inline-block mt-2 w-1/2 pr-1">
+                      <label
+                        className="block text-sm text-gray-600"
+                        
+                      >
+                        Country
+                      </label>
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="Country"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                      <label
+                        className="block text-sm text-gray-600"
+                        
+                      >
+                        Zip
+                      </label>
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="Zip"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <p className="mt-4 text-gray-800 font-medium">
+                      Payment information
+                    </p>
+                    <div className="">
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="Card Number"
+                      />
+                    </div>
+                    <div className="inline-block mt-2 w-1/2 pr-1">
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="MM/YY"
+                      />
+                    </div>
+                    <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                      <input
+                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        placeholder="CVC"
+                      />
+                    </div>
+                    <div className="mt-4">
+                      <button
+                        className="px-4 py-1 tracking-wider bg-teal-300 rounded"
+                        type="submit"
+                      >
+                        Pay
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </Modal>
             </div>
           </div>
         </div>
