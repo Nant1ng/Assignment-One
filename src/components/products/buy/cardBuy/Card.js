@@ -59,7 +59,30 @@ function Card({ title, price, desc, image }) {
   }
 
   function submitHandler(event) {
-    console.log("HHHHHHHAAAAAAAAYYYYYYYE")
+    console.log("HHHHHHHAAAAAAAAYYYYYYYE");
+    /*event.preventDefault();
+  
+    axios.post('http://localhost:1337/checkout', {
+      name: EnteredName,
+      email: EnteredEmail,
+      address: EnteredAddress,
+      city: EnteredCity,
+      country: EnteredCountry,
+      zip: EnteredZip,
+      user: userid,
+      product: productid,
+
+    })
+      .then((res) => {
+
+        if (res.status === 200) {
+          console.log(res);
+        }
+
+      })
+      .catch(error => {
+        console.log('Error message: ', error);
+      }) */
   }
 
   return (
@@ -96,88 +119,86 @@ function Card({ title, price, desc, image }) {
               >
                 <button onClick={closeModal}>X</button>
                 <div className="leading-loose flex justify-center pt-4">
-                  <form className="max-w-xl m-2 p-5 bg-white rounded shadow-xl" onSubmit={submitHandler}>
+                  <form
+                    className="max-w-xl m-2 p-5 bg-white rounded shadow-xl"
+                    onSubmit={submitHandler}
+                  >
                     <p className="text-gray-800 font-medium">
                       Customer Information
                     </p>
                     <div className="">
-                      <label
-                        className="block text-left text-sm text-gray-00"
-                      >
+                      <label className="block text-left text-sm text-gray-00">
                         Name
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
                         placeholder="Your Name"
+                        value={EnteredName}
+                        onChange={nameChangeHandler}
                       />
                     </div>
                     <div className="mt-2">
-                      <label
-                        className="block text-left text-sm text-gray-600"
-                      >
+                      <label className="block text-left text-sm text-gray-600">
                         Email
                       </label>
                       <input
                         className="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded"
                         placeholder="Your Email"
                         aria-label="Email"
+                        value={EnteredEmail}
+                        onChange={emailChangeHandler}
                       />
                     </div>
                     <div className="mt-2">
-                      <label
-                        className=" block text-left text-sm text-gray-600"
-                      >
+                      <label className=" block text-left text-sm text-gray-600">
                         Address
                       </label>
                       <input
                         className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                         placeholder="Street"
-                        aria-label="Email"
+                        aria-label="Address"
+                        value={EnteredAddress}
+                        onChange={addressChangeHandler}
                       />
                     </div>
                     <div className="mt-2">
-                      <label
-                        className=" text-sm text-left block text-gray-600"
-                        
-                      >
+                      <label className=" text-sm text-left block text-gray-600">
                         City
                       </label>
                       <input
                         className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                         placeholder="City"
-                        aria-label="Email"
+                        aria-label="City"
+                        value={EnteredCity}
+                        onChange={cityChangeHandler}
                       />
                     </div>
                     <div className="inline-block mt-2 w-1/2 pr-1">
-                      <label
-                        className="block text-sm text-gray-600"
-                        
-                      >
+                      <label className="block text-sm text-gray-600">
                         Country
                       </label>
                       <input
                         className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                         placeholder="Country"
-                        aria-label="Email"
+                        aria-label="Country"
+                        value={EnteredCountry}
+                        onChange={countryChangeHandler}
                       />
                     </div>
                     <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                      <label
-                        className="block text-sm text-gray-600"
-                        
-                      >
-                        Zip
-                      </label>
+                      <label className="block text-sm text-gray-600">Zip</label>
                       <input
                         className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                         placeholder="Zip"
-                        aria-label="Email"
+                        aria-label="Zip"
+                        value={EnteredZip}
+                        onChange={zipChangeHandler}
                       />
                     </div>
                     <p className="mt-4 text-gray-800 font-medium">
                       Payment information
                     </p>
-                    <div className="">
+                    <div>
                       <input
                         className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                         placeholder="Card Number"
