@@ -44,6 +44,7 @@ function CardList() {
         return (
           <Card
             key={BuyProduct.id}
+            productid={BuyProduct.id}
             image={BuyProduct.Image}
             title={BuyProduct.Title}
             desc={BuyProduct.Description}
@@ -51,11 +52,11 @@ function CardList() {
           />
         );
       })}
-      {products.length > loadPage || products.length === loadPage ? (
+      
         <button onClick={showMore}>Load more</button>
-      ) : (
+      
         <button onClick={showLess}>Show less</button>
-      )}
+      
       )
     </div>
   );
