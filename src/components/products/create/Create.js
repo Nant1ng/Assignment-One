@@ -27,9 +27,9 @@ function Create() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:1337/products", {
-        name: EnteredTitle,
-        Descriptions: EnteredDescription,
+      .post("http://localhost:1337/buy-products", {
+        Title: EnteredTitle,
+        Description: EnteredDescription,
         Price: EnteredPrice,
       })
       .then((response) => {
@@ -38,7 +38,7 @@ function Create() {
         const data = new FormData();
 
         data.append("files", EnteredImage);
-        data.append("ref", "product");
+        data.append("ref", "buy-products");
         data.append("refId", response.data.id);
         data.append("field", "Image");
 
