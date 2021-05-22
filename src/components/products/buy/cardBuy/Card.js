@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
 
-function Card({ title, price, desc, image }) {
+function Card({ productid, title, price, desc, image }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [EnteredName, setName] = useState("");
   const [EnteredEmail, setEmail] = useState("");
@@ -11,7 +11,8 @@ function Card({ title, price, desc, image }) {
   const [EnteredCountry, setCountry] = useState("");
   const [EnteredZip, setZip] = useState("");
 
-  /*const userid = localStorage,getItem('userid');*/
+  const userid = localStorage.getItem("UserId");
+  const jwt = localStorage.getItem("JWT");
 
   Modal.setAppElement("#root");
 
@@ -60,29 +61,27 @@ function Card({ title, price, desc, image }) {
 
   function submitHandler(event) {
     console.log("HHHHHHHAAAAAAAAYYYYYYYE");
-    /*event.preventDefault();
-  
-    axios.post('http://localhost:1337/checkout', {
-      name: EnteredName,
-      email: EnteredEmail,
-      address: EnteredAddress,
-      city: EnteredCity,
-      country: EnteredCountry,
-      zip: EnteredZip,
-      user: userid,
-      product: productid,
+    event.preventDefault();
 
-    })
+    axios
+      .post("http://localhost:1337/buy-checkout", {
+        Name: EnteredName,
+        Email: EnteredEmail,
+        Address: EnteredAddress,
+        City: EnteredCity,
+        Country: EnteredCountry,
+        Zip: EnteredZip,
+        user: userid,
+        buy_product: productid,
+      })
       .then((res) => {
-
         if (res.status === 200) {
           console.log(res);
         }
-
       })
-      .catch(error => {
-        console.log('Error message: ', error);
-      }) */
+      .catch((error) => {
+        console.log("Error message: ", error);
+      });
   }
 
   return (
