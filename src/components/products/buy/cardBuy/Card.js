@@ -194,27 +194,6 @@ function Card({ productid, title, price, desc, image }) {
                         onChange={zipChangeHandler}
                       />
                     </div>
-                    <p className="mt-4 text-gray-800 font-medium">
-                      Payment information
-                    </p>
-                    <div>
-                      <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                        placeholder="Card Number"
-                      />
-                    </div>
-                    <div className="inline-block mt-2 w-1/2 pr-1">
-                      <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                        placeholder="MM/YY"
-                      />
-                    </div>
-                    <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                      <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                        placeholder="CVC"
-                      />
-                    </div>
                     <div className="mt-4">
                       <button
                         className="px-4 py-1 tracking-wider bg-teal-300 rounded"
