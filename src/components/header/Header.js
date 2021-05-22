@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-const token = localStorage.getItem("Token");
+const jwt = localStorage.getItem("JWT");
   let isLoggedIn = false;
 
-  if (token !== null && token !== "") {
+  if (jwt !== null && jwt !== "") {
     isLoggedIn = true;
   }
 
