@@ -21,7 +21,7 @@ function Login() {
 
   useEffect(
     () => {
-      const jwt = localStorage.getItem("Token");
+      const jwt = localStorage.getItem("JWT");
       setJWT(jwt);
 
       const userid = localStorage.getItem("UserId");
@@ -40,7 +40,8 @@ function Login() {
         password: EnteredPassword,
       })
       .then((response) => {
-        localStorage.setItem("Token", response.data.jwt);
+        localStorage.setItem("JWT", response.data.jwt);
+        localStorage.setItem("UserId", response.data.user.id);
         history.push("/");
         window.location.reload();
       })
