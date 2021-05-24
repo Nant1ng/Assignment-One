@@ -77,6 +77,15 @@ function Header() {
                 </Link>
               </li>
               {isLoggedIn ? (
+                <>
+                <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  to="/My-Purchases"
+                >
+                  My Purchases
+                </Link>
+              </li>
                 <li>
                   <Link
                     className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
@@ -85,6 +94,7 @@ function Header() {
                     Log out
                   </Link>
                 </li>
+                </>
               ) : (
                 <>
                   <li>
