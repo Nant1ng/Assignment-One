@@ -65,7 +65,7 @@ function Card({ productid, title, price, desc, image }) {
 
     axios
       .post(
-        "http://localhost:1337/buy-checkout",
+        "http://localhost:1337/buy-checkouts",
         {
           Name: EnteredName,
           Email: EnteredEmail,
