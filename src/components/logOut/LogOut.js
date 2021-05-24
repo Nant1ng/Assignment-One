@@ -3,10 +3,13 @@ import { useHistory } from "react-router-dom";
 
 function LogOut() {
   const history = useHistory();
+  // let jwt = localStorage.getItem("JWT");
+  // const [JWT, setJWT] = useState(jwt);
 
   function handleClick(e) {
     e.preventDefault();
-    localStorage.removeItem("Token");
+    localStorage.removeItem("JWT");
+    localStorage.removeItem("UserId");
     history.push("/");
     window.location.reload();
   }
