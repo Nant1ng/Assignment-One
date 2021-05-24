@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-import useForm from "../formValidation/useForm";
-import validate from "../formValidation/validation";
+// import useForm from "../formValidation/useForm";
+// import validate from "../formValidation/validation";
 /* Måste göra en funktion som anropar två funktioner för att få onChange att göra två saker. */
 function Register() {
   const history = useHistory();
@@ -42,15 +42,15 @@ function Register() {
         console.log("Error message: ", error);
       });
   }
-   // Form Validation
-   const { handleChange, handleSubmit, values, errors } = useForm(
-    submit,
-    validate
-  );
+  //  Form Validation funkar inte exakt så som jag vill... 
+  //  const { handleChange, handleSubmit, values, errors } = useForm(
+  //   submit,
+  //   validate
+  // );
 
-  function submit() {
-    console.log("Submitted Succesfully")
-  }
+  // function submit() {
+  //   console.log("Submitted Succesfully")
+  // }
 
   return (
     <div className="font-sans">
@@ -62,7 +62,7 @@ function Register() {
             <label className="block mt-3 text-xl text-gray-700 text-center font-semibold">
               Sign Up
             </label>
-            <form className="mt-10" onSubmit={handleSubmit} noValidate>
+            <form className="mt-10" onSubmit={submitHandler} noValidate>
               <div>
                 <input
                   type="Fullname"
@@ -75,12 +75,12 @@ function Register() {
                 <input
                   type="email"
                   name="email"
-                  value={(values.email)}
-                  onChange={handleChange}
+                  value={(EnteredEmail)}
+                  onChange={emailChangeHandler}
                   placeholder=" Email"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
-                {errors.email && <p className="text-red-600">{errors.email}</p>}
+                {/* {errors.email && <p className="text-red-600">{errors.email}</p>} */}
               </div>
 
               <div className="mt-3">
@@ -97,13 +97,13 @@ function Register() {
                 <input
                 name="password"
                   type="password"
-                  value={values.password}
-                  onChange={handleChange}
+                  value={EnteredPassword}
+                  onChange={passwordChangeHandler}
                   placeholder=" Password"
                   className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                 />
               </div>
-              {errors.password && <p className="text-red-600">{errors.password}</p>}
+              {/* {errors.password && <p className="text-red-600">{errors.password}</p>} */}
               <div className="1">
                 <input
                   type="password"
