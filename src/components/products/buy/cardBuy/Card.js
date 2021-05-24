@@ -64,16 +64,24 @@ function Card({ productid, title, price, desc, image }) {
     event.preventDefault();
 
     axios
-      .post("http://localhost:1337/buy-checkout", {
-        Name: EnteredName,
-        Email: EnteredEmail,
-        Address: EnteredAddress,
-        City: EnteredCity,
-        Country: EnteredCountry,
-        Zip: EnteredZip,
-        user: userid,
-        buy_product: productid,
-      })
+      .post(
+        "http://localhost:1337/buy-checkout",
+        {
+          Name: EnteredName,
+          Email: EnteredEmail,
+          Address: EnteredAddress,
+          City: EnteredCity,
+          Country: EnteredCountry,
+          Zip: EnteredZip,
+          user: userid,
+          buy_product: productid,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.status === 200) {
           console.log(res);
@@ -82,7 +90,7 @@ function Card({ productid, title, price, desc, image }) {
       .catch((error) => {
         console.log("Error message: ", error);
       });
-  }
+  } 
 
   return (
     <>
