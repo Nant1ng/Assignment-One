@@ -52,12 +52,8 @@ function CardList() {
           />
         );
       })}
-      
-        <button onClick={showMore}>Load more</button>
-      
-        <button onClick={showLess}>Show less</button>
-      
-      )
+      <button onClick={showMore}>Load more</button>
+      <button onClick={showLess}>Show less</button>)
     </div>
   );
 }
