@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Create() {
   const [EnteredTitle, setTitle] = useState("");
   const [EnteredDescription, setDescription] = useState("");
   const [EnteredPrice, setPrice] = useState("");
   const [EnteredImage, setImage] = useState("");
+
+  const jwt = localStorage.getItem("JWT");
+  const history = useHistory();
 
   function titleChangeHandler(event) {
     setTitle(event.target.value);
@@ -27,14 +31,20 @@ function Create() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:1337/buy-products", {
-        Title: EnteredTitle,
-        Description: EnteredDescription,
-        Price: EnteredPrice,
-      })
+      .post(
+        "http://localhost:1337/buy-products",
+        {
+          Title: EnteredTitle,
+          Description: EnteredDescription,
+          Price: EnteredPrice,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      )
       .then((response) => {
-        console.log(response.data);
-
         const data = new FormData();
 
         data.append("files", EnteredImage);
@@ -44,7 +54,7 @@ function Create() {
 
         axios
           .post("http://localhost:1337/upload", data)
-          .then((Image) => console.log(Image))
+          .then(() => history.push("/"))
           .catch((error) => console.log(error));
       })
       .catch((error) => {
@@ -79,11 +89,7 @@ function Create() {
           placeholder="Price"
         />
         <label>Image</label>
-        <input
-          type="file"
-          name="file"
-          onChange={imageChangeHandler}
-        />
+        <input type="file" name="file" onChange={imageChangeHandler} />
         <button type="submit">Submit</button>
       </form>
     </div>
