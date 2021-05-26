@@ -41,6 +41,7 @@ function Login() {
       .then((response) => {
         localStorage.setItem("JWT", response.data.jwt);
         localStorage.setItem("UserId", response.data.user.id);
+        localStorage.setItem("Role", response.data.user.role.type);
         history.push("/");
         window.location.reload();
       })
