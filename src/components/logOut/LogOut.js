@@ -10,6 +10,7 @@ function LogOut() {
     e.preventDefault();
     localStorage.removeItem("JWT");
     localStorage.removeItem("UserId");
+    localStorage.removeItem("Role");
     history.push("/");
     window.location.reload();
   }
