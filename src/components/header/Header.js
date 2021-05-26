@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 const jwt = localStorage.getItem("JWT");
-  let isLoggedIn = false;
+const role = localStorage.getItem("Role");
 
-  if (jwt !== null && jwt !== "") {
-    isLoggedIn = true;
-  }
+let isLoggedIn = false;
+let isAdmin = false;
+
+if (jwt !== null && jwt !== "") {
+  isLoggedIn = true;
+}
+
+if (role === "admin") {
+  isAdmin = true;
+}
 
 function Header() {
   // const [JWT, setJWT] = useState(null);
@@ -15,7 +22,7 @@ function Header() {
   // useEffect(() => {
   //   const jwt = localStorage.getItem("Token")
   //   setJWT(jwt)
-    
+
   // }, [JWT])
 
   return (
@@ -60,6 +67,16 @@ function Header() {
         >
           <nav>
             <ul className="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
+              {isAdmin ? (
+                <li>
+                  <Link
+                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                    to="/Create"
+                  >
+                    Create
+                  </Link>
+                </li>
+              ) : null}
               <li>
                 <Link
                   className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
@@ -78,22 +95,22 @@ function Header() {
               </li>
               {isLoggedIn ? (
                 <>
-                <li>
-                <Link
-                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                  to="/My-Purchases"
-                >
-                  My Purchases
-                </Link>
-              </li>
-                <li>
-                  <Link
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                    to="/Log-out"
-                  >
-                    Log out
-                  </Link>
-                </li>
+                  <li>
+                    <Link
+                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                      to="/My-Purchases"
+                    >
+                      My Purchases
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                      to="/Log-out"
+                    >
+                      Log out
+                    </Link>
+                  </li>
                 </>
               ) : (
                 <>
