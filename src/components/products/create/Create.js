@@ -53,7 +53,15 @@ function Create() {
         data.append("field", "Image");
 
         axios
-          .post("http://localhost:1337/upload", data)
+          .post(
+            "http://localhost:1337/upload",
+            // {
+            //   headers: {
+            //     Authorization: `Bearer ${jwt}`,
+            //   },
+            // },
+            data
+          )
           .then(() => history.push("/"))
           .catch((error) => console.log(error));
       })
