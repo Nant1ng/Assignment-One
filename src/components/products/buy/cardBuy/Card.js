@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
+import { useHistory } from "react-router";
 
 function Card({ productid, title, price, desc, image }) {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -11,10 +12,19 @@ function Card({ productid, title, price, desc, image }) {
   const [EnteredCountry, setCountry] = useState("");
   const [EnteredZip, setZip] = useState("");
 
+  const history = useHistory();
+
+  let isAdmin = false;
+
   const userid = localStorage.getItem("UserId");
   const jwt = localStorage.getItem("JWT");
+  const role = localStorage.getItem("Role");
 
   Modal.setAppElement("#root");
+
+  if (role === "admin") {
+    isAdmin = true;
+  }
 
   const customStyles = {
     content: {
@@ -84,17 +94,30 @@ function Card({ productid, title, price, desc, image }) {
       )
       .then((res) => {
         if (res.status === 200) {
-          console.log(res);
+          history.push("/Checkouts");
         }
       })
       .catch((error) => {
         console.log("Error message: ", error);
       });
-  } 
+  }
+  async function deleteProducts(id) {
+    const response = await axios.delete(
+      `http://localhost:1337/buy-products/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    );
+    if (response.status === 200) {
+      window.location.reload();
+    }
+  }
 
   return (
     <>
-      <div className="flex-auto flex-col flow-root">
+      <div className="flex-auto flex-col flow-root" id={productid}>
         <div className="max-w-md mx-auto bg-gray-500 rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
           <div className="md:flex">
             <div className="md:flex-shrink-0">
@@ -112,12 +135,21 @@ function Card({ productid, title, price, desc, image }) {
                 {price} $
               </p>
               <p className="mt-2 text-teal-300">{desc}</p>
-              <button
-                className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
-                onClick={openModal}
-              >
-                Buy
-              </button>
+              {isAdmin ? (
+                <button
+                  className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
+                  onClick={() => deleteProducts(productid)}
+                >
+                  Delete Product
+                </button>
+              ) : (
+                <button
+                  className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
+                  onClick={openModal}
+                >
+                  Buy
+                </button>
+              )}
               <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
