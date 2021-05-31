@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
 
+const stripePromise = loadStripe(
+  "pk_test_51IxA3vG2wXCCEzqBYUxT9lhsHHUy3PJ95WKhuY2Hu7aG1X0QeFYZBcTGbhWkpAWTELN9ykR6F2wHK36PpGqHV6Vr00HbcxXZiw"
+);
 
 function MyPurchases() {
   const [products, setProducts] = useState([]);
@@ -23,6 +27,32 @@ function MyPurchases() {
     };
     fetchProducts();
   }, []);
+
+  const handleClick = async (event) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Call your backend to create the Checkout Session
+    // const response = await fetch("/create-checkout-session", {
+    //   method: "POST",
+    // });
+    const response = await axios.post(
+      "http://localhost:4242/create-checkout-session"
+    );
+
+    const sessionId = await response.data.id;
+
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: sessionId,
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    }
+  };
 
   return (
     <div className="overflow-hidden">
@@ -49,6 +79,13 @@ function MyPurchases() {
                 </h1>
                 <button className="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded">
                   Bought
+                </button>
+                <button
+                  className="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded"
+                  role="link"
+                  onClick={handleClick}
+                >
+                  Checkout
                 </button>
               </div>
             </div>
