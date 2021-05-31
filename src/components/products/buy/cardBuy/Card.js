@@ -131,7 +131,10 @@ function Card({ productid, title, price, desc, image }) {
               <div className="text-left uppercase tracking-wide text-sm text-teal-300 font-semibold">
                 {title}
               </div>
-              <p className="text-left block mt-1 text-lg leading-tight font-medium text-teal-300">
+              <p
+                className="text-left block mt-1 text-lg leading-tight font-medium text-teal-300"
+                value={price}
+              >
                 {price} $
               </p>
               <p className="mt-2 text-teal-300">{desc}</p>
