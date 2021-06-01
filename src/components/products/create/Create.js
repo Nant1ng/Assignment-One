@@ -52,16 +52,13 @@ function Create() {
         data.append("refId", response.data.id);
         data.append("field", "Image");
 
+        // axios.post(url[, data[, config]])
         axios
-          .post(
-            "http://localhost:1337/upload",
-            // {
-            //   headers: {
-            //     Authorization: `Bearer ${jwt}`,
-            //   },
-            // },
-            data
-          )
+          .post("http://localhost:1337/upload", data, {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          })
           .then(() => history.push("/"))
           .catch((error) => console.log(error));
       })
