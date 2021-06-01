@@ -101,6 +101,7 @@ function Card({ productid, title, price, desc, image }) {
         console.log("Error message: ", error);
       });
   }
+
   async function deleteProducts(id) {
     const response = await axios.delete(
       `http://localhost:1337/buy-products/${id}`,
