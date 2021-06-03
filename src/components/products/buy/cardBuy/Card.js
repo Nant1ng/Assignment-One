@@ -116,6 +116,77 @@ function Card({ productid, title, price, desc, image }) {
     }
   }
 
+  // Update Form
+
+  const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
+
+  const [EnteredTitle, setTitle] = useState("");
+  const [EnteredDescription, setDescription] = useState("");
+  const [EnteredPrice, setPrice] = useState("");
+  const [EnteredImage, setImage] = useState("");
+
+  function openUpdateModal() {
+    setUpdateModalIsOpen(true);
+  }
+
+  function closeUpdateModal() {
+    setUpdateModalIsOpen(false);
+  }
+
+  function titleChangeHandler(event) {
+    setTitle(event.target.value);
+  }
+
+  function descriptionChangeHandler(event) {
+    setDescription(event.target.value);
+  }
+
+  function priceChangeHandler(event) {
+    setPrice(event.target.value);
+  }
+
+  function imageChangeHandler(event) {
+    setImage(event.target.files[0]);
+  }
+
+  function updateSubmitHandler(event) {
+    event.preventDefault();
+    axios
+      .put(
+        `http://localhost:1337/buy-products/${productid}`,
+        {
+          Title: EnteredTitle,
+          Description: EnteredDescription,
+          Price: EnteredPrice,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      )
+      .then((response) => {
+        const data = new FormData();
+
+        data.append("files", EnteredImage);
+        data.append("ref", "buy-products");
+        data.append("refId", response.data.id);
+        data.append("field", "Image");
+
+        axios
+          .post("http://localhost:1337/upload", data, {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          })
+          .then(() => window.location.reload())
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       <div className="flex-auto flex-col flow-root" id={productid}>
@@ -140,12 +211,20 @@ function Card({ productid, title, price, desc, image }) {
               </p>
               <p className="mt-2 text-teal-300">{desc}</p>
               {isAdmin ? (
-                <button
-                  className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
-                  onClick={() => deleteProducts(productid)}
-                >
-                  Delete Product
-                </button>
+                <>
+                  <button
+                    className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
+                    onClick={() => deleteProducts(productid)}
+                  >
+                    Delete Product
+                  </button>
+                  <button
+                    className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 my-2 flex items-center"
+                    onClick={() => openUpdateModal(productid)}
+                  >
+                    Update Product
+                  </button>
+                </>
               ) : (
                 <button
                   className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-2 flex items-center"
@@ -246,6 +325,50 @@ function Card({ productid, title, price, desc, image }) {
                         Pay
                       </button>
                     </div>
+                  </form>
+                </div>
+              </Modal>
+              
+              <Modal
+                isOpen={updateModalIsOpen}
+                onRequestClose={closeUpdateModal}
+                style={customStyles}
+                contentLabel="Update Form"
+              >
+                <div>
+                  <button onClick={closeUpdateModal}>X</button>
+                  <form onSubmit={updateSubmitHandler}>
+                    <label>Title</label>
+                    <input
+                      type="text"
+                      name="title"
+                      value={EnteredTitle}
+                      onChange={titleChangeHandler}
+                      placeholder="Title"
+                    />
+                    <label>Description</label>
+                    <input
+                      type="text"
+                      name="description"
+                      value={EnteredDescription}
+                      onChange={descriptionChangeHandler}
+                      placeholder="Description"
+                    />
+                    <label>Price</label>
+                    <input
+                      type="number"
+                      name="price"
+                      value={EnteredPrice}
+                      onChange={priceChangeHandler}
+                      placeholder="Price"
+                    />
+                    <label>Image</label>
+                    <input
+                      type="file"
+                      name="file"
+                      onChange={imageChangeHandler}
+                    />
+                    <button type="submit">Submit</button>
                   </form>
                 </div>
               </Modal>
