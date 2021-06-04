@@ -174,7 +174,7 @@ function Card({ productid, title, price, desc, image }) {
         data.append("field", "Image");
 
         axios
-          .post("http://localhost:1337/upload", data, {
+          .put("http://localhost:1337/upload", data, {
             headers: {
               Authorization: `Bearer ${jwt}`,
             },
