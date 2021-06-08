@@ -19,7 +19,7 @@ function PurchaseList() {
         }
       );
       setProducts(response.data);
-      console.log("lägg tilll",response.data);
+      console.log("lägg till",response.data);
     };
     fetchProducts();
   }, []);
@@ -33,6 +33,7 @@ function PurchaseList() {
               title={BuyProduct.buy_product.Title}
               description={BuyProduct.buy_product.Description}
               price={BuyProduct.buy_product.Price}
+              image={BuyProduct.buy_product.Image}
               />
           );
       })}
