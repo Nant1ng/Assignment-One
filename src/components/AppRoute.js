@@ -15,7 +15,6 @@ import Create from "./products/create/Create";
 
 import Buy from "./products/buy/Buy";
 import Rent from "./products/rent/Rent";
-//import MyPurchases from "./myPurchases/MyPurchases";
 import PurchaseList from "./myPurchases/PurchaseList";
 
 import ContactUs from "./contactUs/ContactUs";
@@ -39,7 +38,6 @@ export default function AppRoute() {
           <Route path="/Buy" component={Buy} />
           <Route path="/Rent" component={Rent} />
           <Route path="/My-Purchases" component={PurchaseList} />
-          {/* <Route path="/PurchaseList" component={PurchaseList} /> */}
           <Route path="/Contact-Us" component={ContactUs} />
         </div>
         <Footer />
