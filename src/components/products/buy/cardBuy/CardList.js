@@ -10,7 +10,8 @@ function CardList() {
     () => {
       const fetchProducts = async () => {
         const response = await axios.get(
-          `http://localhost:1337/buy-products?_limit=${loadPage}`
+          // `http://localhost:1337/buy-products?_limit=${loadPage}`
+          `https://glacial-coast-99784.herokuapp.com/buy-products?_limit=${loadPage}`
         );
         console.log(response);
 
