@@ -55,7 +55,7 @@ function Create() {
 
         // axios.post(url[, data[, config]])
         axios
-          .put("https://glacial-coast-99784.herokuapp.com/upload", data, {
+          .post("https://glacial-coast-99784.herokuapp.com/upload", data, {
             // .post("http://localhost:1337/upload", data, {
             headers: {
               Authorization: `Bearer ${jwt}`,
