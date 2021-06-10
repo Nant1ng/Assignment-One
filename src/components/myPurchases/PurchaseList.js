@@ -11,7 +11,8 @@ function PurchaseList() {
 
     const fetchProducts = async () => {
       const response = await axios.get(
-        `http://localhost:1337/buy-checkouts?_where[1][user.id]=${userid}`,
+        `https://glacial-coast-99784.herokuapp.com/buy-checkouts?_where[1][user.id]=${userid}`,
+        // `http://localhost:1337/buy-checkouts?_where[1][user.id]=${userid}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`,
@@ -19,7 +20,7 @@ function PurchaseList() {
         }
       );
       setProducts(response.data);
-      console.log("lägg till",response.data);
+      console.log("Checkout Data",response.data);
     };
     fetchProducts();
   }, []);
