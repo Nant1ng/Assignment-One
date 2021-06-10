@@ -32,7 +32,8 @@ function Create() {
 
     axios
       .post(
-        "http://localhost:1337/buy-products",
+        "https://glacial-coast-99784.herokuapp.com/buy-products",
+        // "http://localhost:1337/buy-products",
         {
           Title: EnteredTitle,
           Description: EnteredDescription,
@@ -54,7 +55,8 @@ function Create() {
 
         // axios.post(url[, data[, config]])
         axios
-          .post("http://localhost:1337/upload", data, {
+          .put("https://glacial-coast-99784.herokuapp.com/upload", data, {
+            // .post("http://localhost:1337/upload", data, {
             headers: {
               Authorization: `Bearer ${jwt}`,
             },
