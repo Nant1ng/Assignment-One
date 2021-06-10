@@ -28,7 +28,8 @@ function Register() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:1337/auth/local/register", {
+     // .post("http://localhost:1337/auth/local/register", {
+        .post("https://glacial-coast-99784.herokuapp.com/auth/local/register", {
         username: EnteredName,
         email: EnteredEmail,
         password: EnteredPassword,
