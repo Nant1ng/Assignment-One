@@ -75,7 +75,8 @@ function Card({ productid, title, price, desc, image }) {
 
     axios
       .post(
-        "http://localhost:1337/buy-checkouts",
+        "https://glacial-coast-99784.herokuapp.com/buy-checkouts",
+        // "http://localhost:1337/buy-checkouts",
         {
           Name: EnteredName,
           Email: EnteredEmail,
@@ -104,7 +105,8 @@ function Card({ productid, title, price, desc, image }) {
 
   async function deleteProducts(id) {
     const response = await axios.delete(
-      `http://localhost:1337/buy-products/${id}`,
+      `https://glacial-coast-99784.herokuapp.com/buy-products/${id}`,
+      // `http://localhost:1337/buy-products/${id}`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -153,7 +155,8 @@ function Card({ productid, title, price, desc, image }) {
     event.preventDefault();
     axios
       .put(
-        `http://localhost:1337/buy-products/${productid}`,
+        `https://glacial-coast-99784.herokuapp.com/buy-products/${productid}`,
+        // `http://localhost:1337/buy-products/${productid}`,
         {
           Title: EnteredTitle,
           Description: EnteredDescription,
@@ -174,7 +177,8 @@ function Card({ productid, title, price, desc, image }) {
         data.append("field", "Image");
 
         axios
-          .put("http://localhost:1337/upload", data, {
+          .put("https://glacial-coast-99784.herokuapp.com/upload", data, {
+            // .put("http://localhost:1337/upload", data, {
             headers: {
               Authorization: `Bearer ${jwt}`,
             },
@@ -195,7 +199,8 @@ function Card({ productid, title, price, desc, image }) {
             <div className="md:flex-shrink-0">
               <img
                 className="w-40 h-48 object-cover"
-                src={`http://localhost:1337${image[0].url}`}
+                // src={`http://localhost:1337${image[0].url}`}
+                src={`https://glacial-coast-99784.herokuapp.com${image[0].url}`}
                 alt="Building"
               />
             </div>
@@ -328,7 +333,6 @@ function Card({ productid, title, price, desc, image }) {
                   </form>
                 </div>
               </Modal>
-              
               <Modal
                 isOpen={updateModalIsOpen}
                 onRequestClose={closeUpdateModal}
