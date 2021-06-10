@@ -34,7 +34,8 @@ function Login() {
     event.preventDefault();
 
     await axios
-      .post("http://localhost:1337/auth/local", {
+     // .post("http://localhost:1337/auth/local", {
+      .post("https://glacial-coast-99784.herokuapp.com/auth/local", {
         identifier: EnteredEmail,
         password: EnteredPassword,
       })
