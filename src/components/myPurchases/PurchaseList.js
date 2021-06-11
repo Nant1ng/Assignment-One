@@ -30,7 +30,7 @@ function PurchaseList() {
           return (
               <MyPurchases 
               key={BuyProduct.id}
-              productid={BuyProduct.id}
+              productid={BuyProduct.buy_product.id}
               title={BuyProduct.buy_product.Title}
               description={BuyProduct.buy_product.Description}
               price={BuyProduct.buy_product.Price}
