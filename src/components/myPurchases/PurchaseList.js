@@ -26,7 +26,7 @@ function PurchaseList() {
   }, []);
   return (<div>
       {products.map((BuyProduct) => {
-          console.log(BuyProduct)
+
           return (
               <MyPurchases 
               key={BuyProduct.id}
