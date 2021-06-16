@@ -48,7 +48,7 @@ function MyPurchases({productid, title, description, image, price}) {
           <img
             className="h-56 w-full object-cover mt-2"
            // src={`http://localhost:1337${productid.image[0].url}`}
-           // src={`https://glacial-coast-99784.herokuapp.com${image[0].url}`}
+            src={`https://glacial-coast-99784.herokuapp.com${image[0].url}`}
             alt="Buildings"
           />
 
