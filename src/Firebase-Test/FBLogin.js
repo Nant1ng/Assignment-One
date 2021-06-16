@@ -5,13 +5,14 @@ import { AuthContext } from "./Auth.js";
 
 const FBLogin = ({ history }) => {
   const handleLogin = useCallback(
-    async event => {
+    async (event) => {
       event.preventDefault();
-      const { email, password} = event.target.elements;
+      const { email, password } = event.target.elements;
       try {
-        await FirebaseConfig
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
+        await FirebaseConfig.auth().signInWithEmailAndPassword(
+          email.value,
+          password.value
+        );
         history.push("/FBLogut");
       } catch (error) {
         alert(error);

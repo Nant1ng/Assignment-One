@@ -6,7 +6,6 @@ const FBLogout = () => {
     <>
       <h1>FBLogout</h1>
       <button onClick={() => FirebaseConfig.auth().signOut()}>Sign out</button>
-      <a>aaaaa</a>
     </>
   );
 };
