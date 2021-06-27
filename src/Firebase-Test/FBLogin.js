@@ -17,7 +17,7 @@ const FBLogin = ({ history }) => {
           email.value,
           password.value
         );
-        history.push("/FBLogut");
+        history.push("/FBLogout");
       } catch (error) {
         alert(error);
       }
