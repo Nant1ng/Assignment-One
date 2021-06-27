@@ -3,6 +3,10 @@ import axios from "axios";
 import Modal from "react-modal";
 import { useHistory } from "react-router";
 
+import { db } from "../../../../Firebase-Test/FirebaseConfig";
+import dotenv from "dotenv";
+dotenv.config();
+
 function Card({ productid, title, price, desc, image }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [EnteredName, setName] = useState("");
@@ -69,37 +73,57 @@ function Card({ productid, title, price, desc, image }) {
     setZip(event.target.value);
   }
 
+  // function submitHandler(event) {
+  //   console.log("HHHHHHHAAAAAAAAYYYYYYYE");
+  //   event.preventDefault();
+
+  //   axios
+  //     .post(
+  //       "https://glacial-coast-99784.herokuapp.com/buy-checkouts",
+  //       // "http://localhost:1337/buy-checkouts",
+  //       {
+  //         Name: EnteredName,
+  //         Email: EnteredEmail,
+  //         Address: EnteredAddress,
+  //         City: EnteredCity,
+  //         Country: EnteredCountry,
+  //         Zip: EnteredZip,
+  //         user: userid,
+  //         buy_product: productid,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${jwt}`,
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         history.push("/Checkouts");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error message: ", error);
+  //     });
+  // }
+
   function submitHandler(event) {
-    console.log("HHHHHHHAAAAAAAAYYYYYYYE");
     event.preventDefault();
 
-    axios
-      .post(
-        "https://glacial-coast-99784.herokuapp.com/buy-checkouts",
-        // "http://localhost:1337/buy-checkouts",
-        {
-          Name: EnteredName,
-          Email: EnteredEmail,
-          Address: EnteredAddress,
-          City: EnteredCity,
-          Country: EnteredCountry,
-          Zip: EnteredZip,
-          user: userid,
-          buy_product: productid,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          history.push("/Checkouts");
-        }
+    db.collection("buy")
+      .add({
+        productID: productid,
+        userID: userid,
+        title: title,
+        description: desc,
+        price: price,
+      })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        console.log("Document written with ID: ", docRef);
       })
       .catch((error) => {
-        console.log("Error message: ", error);
+        console.log("Errror:", error);
       });
   }
 
