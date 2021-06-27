@@ -24,7 +24,7 @@ import ContactUs from "./contactUs/ContactUs";
 import { AuthProvider } from "../Firebase-Test/Auth";
 import FBLogin from "../Firebase-Test/FBLogin";
 import FBSignUp from "../Firebase-Test/FBSignup";
-import FBLogout from "../Firebase-Test/FBLogut";
+import FBLogout from "../Firebase-Test/FBLogout";
 
 
 
