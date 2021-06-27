@@ -19,9 +19,19 @@ import PurchaseList from "./myPurchases/PurchaseList";
 
 import ContactUs from "./contactUs/ContactUs";
 
+// Firebase 
+
+import { AuthProvider } from "../Firebase-Test/Auth";
+import FBLogin from "../Firebase-Test/FBLogin";
+import FBSignUp from "../Firebase-Test/FBSignup";
+import FBLogout from "../Firebase-Test/FBLogout";
+
+
+
 export default function AppRoute() {
   return (
     <>
+    <AuthProvider>
       <Router>
         <Header />
         <div className="box-content h-screen overflow-auto overflow-x-hidden">
@@ -39,9 +49,14 @@ export default function AppRoute() {
           <Route path="/Rent" component={Rent} />
           <Route path="/My-Purchases" component={PurchaseList} />
           <Route path="/Contact-Us" component={ContactUs} />
+
+          <Route path="/FBLogin" component={FBLogin} />
+          <Route path="/FBSignup" exact component={FBSignUp} />
+          <Route path="/FBLogout" component={FBLogout} />
         </div>
         <Footer />
       </Router>
+    </AuthProvider>
     </>
   );
 }
