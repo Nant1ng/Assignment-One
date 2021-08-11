@@ -43,7 +43,7 @@ function Login() {
         localStorage.setItem("JWT", response.data.jwt);
         localStorage.setItem("UserId", response.data.user.id);
         localStorage.setItem("Role", response.data.user.role.type);
-        history.push("/");
+        history.push("/Create");
         window.location.reload();
       })
       .catch((error) => {

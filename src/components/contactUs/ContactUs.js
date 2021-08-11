@@ -1,8 +1,46 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { db } from "../../Firebase-Test/FirebaseConfig";
 
 function ContactUs() {
+  const [EnteredName, setName] = useState("");
+  const [EnteredEmail, setEmail] = useState("");
+  const [EnteredPhone, setPhone] = useState("");
+  const [EnteredMessage, setMessage] = useState("");
+
+  function nameChangeHandler(event) {
+    setName(event.target.value);
+  }
+
+  function emailChangeHandler(event) {
+    setEmail(event.target.value);
+  }
+
+  function phoneChangeHandler(event) {
+    setPhone(event.target.value);
+  }
+
+  function messageChangeHandler(event) {
+    setMessage(event.target.value);
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    db.collection("message")
+      .add({
+        name: EnteredName,
+        email: EnteredEmail,
+        phone: EnteredPhone,
+        message: EnteredMessage,
+      })
+      .then(() => {
+        console.log("Message has been sent");
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }
   return (
     <div>
       <div className="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
@@ -90,7 +128,10 @@ function ContactUs() {
                 </div>
               </div>
 
-              <form className="p-6 flex flex-col justify-center">
+              <form
+                className="p-6 flex flex-col justify-center"
+                onSubmit={submitHandler}
+              >
                 <div className="flex flex-col">
                   <label for="name" className="hidden">
                     Full Name
@@ -99,6 +140,8 @@ function ContactUs() {
                     type="name"
                     name="name"
                     id="name"
+                    value={EnteredName}
+                    onChange={nameChangeHandler}
                     placeholder="Full Name"
                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
@@ -112,6 +155,8 @@ function ContactUs() {
                     type="email"
                     name="email"
                     id="email"
+                    value={EnteredEmail}
+                    onChange={emailChangeHandler}
                     placeholder="Email"
                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
@@ -119,25 +164,38 @@ function ContactUs() {
 
                 <div className="flex flex-col mt-2">
                   <label for="tel" className="hidden">
-                    Number
+                    Phone Number
                   </label>
                   <input
                     type="tel"
                     name="tel"
                     id="tel"
+                    value={EnteredPhone}
+                    onChange={phoneChangeHandler}
                     placeholder="Telephone Number"
                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
                 </div>
-                {/*Bara för nu läget*/}
-                <Link to="/">
-                  <button
-                    type="submit"
-                    className="md:w-32 bg-teal-300 hover:bg-teal-200 text-gray-700 font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
-                  >
-                    Submit
-                  </button>
-                </Link>
+                <div className="flex flex-col mt-2">
+                  <label for="message" className="hidden">
+                    Message
+                  </label>
+                  <input
+                    type="message"
+                    name="message"
+                    id="message"
+                    value={EnteredMessage}
+                    onChange={messageChangeHandler}
+                    placeholder="Message"
+                    className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="md:w-32 bg-teal-300 hover:bg-teal-200 text-gray-700 font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>

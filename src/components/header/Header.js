@@ -106,7 +106,8 @@ function Header() {
                   <li>
                     <Link
                       className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      to="/Log-out"
+                      //to="/Log-out"
+                      to="/FBLogout"
                     >
                       Log out
                     </Link>
@@ -114,10 +115,20 @@ function Header() {
                 </>
               ) : (
                 <>
+                <li>
+                    <Link
+                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                      //to="/Log-out"
+                      to="/FBLogout"
+                    >
+                      Log out
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      to="/Log-in"
+                      //to="/Log-in"
+                      to="/FBLogin"
                     >
                       Log in
                     </Link>
@@ -125,9 +136,18 @@ function Header() {
                   <li>
                     <Link
                       className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      to="/Register"
+                      //to="/Register"
+                      to="/FBSignUp"
                     >
                       Register
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                      to="/FBProfile"
+                    >
+                     Profil
                     </Link>
                   </li>
                 </>

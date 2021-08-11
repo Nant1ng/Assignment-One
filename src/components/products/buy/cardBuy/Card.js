@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import { useHistory } from "react-router";
+//import { useHistory } from "react-router";
 
 import { db } from "../../../../Firebase-Test/FirebaseConfig";
+import { AuthContext } from "../../../../Firebase-Test/Auth";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,11 +17,10 @@ function Card({ productid, title, price, desc, image }) {
   const [EnteredCountry, setCountry] = useState("");
   const [EnteredZip, setZip] = useState("");
 
-  const history = useHistory();
+  //const history = useHistory();
 
   let isAdmin = false;
 
-  const userid = localStorage.getItem("UserId");
   const jwt = localStorage.getItem("JWT");
   const role = localStorage.getItem("Role");
 
@@ -107,13 +107,20 @@ function Card({ productid, title, price, desc, image }) {
   //     });
   // }
 
+  const { currentUser } = useContext(AuthContext);
+  let UserId = null;
+
+  if (currentUser !== null) {
+    UserId = currentUser.uid;
+  }
+
   function submitHandler(event) {
     event.preventDefault();
 
     db.collection("buy")
       .add({
         productID: productid,
-        userID: userid,
+        userID: UserId,
         title: title,
         description: desc,
         price: price,
@@ -123,7 +130,7 @@ function Card({ productid, title, price, desc, image }) {
         console.log("Document written with ID: ", docRef);
       })
       .catch((error) => {
-        console.log("Errror:", error);
+        console.log("Error:", error);
       });
   }
 
