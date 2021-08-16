@@ -6,9 +6,6 @@ import HomePage from "./homePage/HomePage";
 import Footer from "./footer/Footer";
 
 import Login from "./login/LogIn";
-import Register from "./register/Register";
-import ForgottenPassword from "./forgottenPassword/ForgottenPassword";
-import ResetPassword from "./resetPassword/ResetPassword";
 import LogOut from "./logOut/LogOut";
 
 import Create from "./products/create/Create";
@@ -25,23 +22,22 @@ import { AuthProvider } from "../Firebase-Test/Auth";
 import FBLogin from "../Firebase-Test/FBLogin";
 import FBSignUp from "../Firebase-Test/FBSignup";
 import FBLogout from "../Firebase-Test/FBLogout";
+import UserProfile from "../Firebase-Test/UserProfile";
 
 
 
 export default function AppRoute() {
   return (
     <>
-    <AuthProvider>
+     <AuthProvider> 
       <Router>
         <Header />
         <div className="box-content h-screen overflow-auto overflow-x-hidden">
           <Route path="/" exact component={HomePage} />
 
-          <Route path="/Log-in" component={Login} />
-          <Route path="/Register" component={Register} />
-          <Route path="/Forgotten-Password" component={ForgottenPassword} />
-          <Route path="/Reset-Password" component={ResetPassword} />
-          <Route path="/Log-out" component={LogOut} />
+          {/* Admin */}
+          <Route path="/Admin-Log-In" component={Login} />
+          <Route path="/Admin-Log-Out" component={LogOut} />
 
           <Route path="/Create" component={Create} />
 
@@ -53,10 +49,11 @@ export default function AppRoute() {
           <Route path="/FBLogin" component={FBLogin} />
           <Route path="/FBSignup" exact component={FBSignUp} />
           <Route path="/FBLogout" component={FBLogout} />
+          <Route path="/FBProfile" component={UserProfile} />
         </div>
         <Footer />
       </Router>
-    </AuthProvider>
+     </AuthProvider> 
     </>
   );
 }

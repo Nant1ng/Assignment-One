@@ -6,6 +6,13 @@ function Footer() {
     window.scrollTo({ top: 0, behavior: "auto" });
   }
 
+  const role = localStorage.getItem("Role");
+  let isAdmin = false;
+
+  if (role === "admin") {
+    isAdmin = true;
+  }
+
   return (
     <div className="w-full min-h-max flex items-center justify-center bg-gray-500 mt-10">
       <div className="md:w-2/3 w-full px-4 text-white flex flex-col">
@@ -28,6 +35,25 @@ function Footer() {
               Contact US
             </Link>
           </div>
+          {isAdmin ? (
+            <div className="w-44 pt-6 md:pt-0">
+              <Link
+                className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-3 flex items-center"
+                to="/Admin-Log-Out"
+              >
+                Admin LogOut
+              </Link>
+            </div>
+          ) : (
+            <div className="w-44 pt-6 md:pt-0">
+              <Link
+                className="bg-teal-300 justify-center text-center rounded-lg shadow px-10 py-3 flex items-center"
+                to="/Admin-Log-In"
+              >
+                Admin LogIn
+              </Link>
+            </div>
+          )}
         </div>
         <div className="flex flex-col">
           <div className="flex mt-20 mb-12 flex-row justify-between">

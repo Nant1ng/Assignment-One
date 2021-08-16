@@ -3,7 +3,6 @@ import { withRouter, Redirect } from "react-router";
 import FirebaseConfig from "./FirebaseConfig";
 import { AuthContext } from "./Auth.js";
 import SMAuth from "./SocialMedia/SMAuth";
-import { facebookProvider } from "./SocialMedia/authMethod";
 import { githubProvider } from "./SocialMedia/authMethod";
 import { googleProvider } from "./SocialMedia/authMethod";
 
@@ -51,7 +50,6 @@ const FBLogin = ({ history }) => {
         <button type="submit">Log in</button>
       </form>
       <br />
-      <button onClick={() => handleOnClick(facebookProvider)}>Facebook</button>
       <button onClick={() => handleOnClick(githubProvider)}>Github</button>
       <button onClick={() => handleOnClick(googleProvider)}>Google</button>
     </div>
