@@ -6,7 +6,6 @@ import HomePage from "./homePage/HomePage";
 import Footer from "./footer/Footer";
 
 import Login from "./login/LogIn";
-import Register from "./register/Register";
 import LogOut from "./logOut/LogOut";
 
 import Create from "./products/create/Create";
