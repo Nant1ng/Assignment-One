@@ -1,4 +1,3 @@
-//import Firebase from "../FirebaseConfig";
 import firebase from "firebase";
 
 function SMAuth(provider) {

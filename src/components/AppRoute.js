@@ -7,8 +7,6 @@ import Footer from "./footer/Footer";
 
 import Login from "./login/LogIn";
 import Register from "./register/Register";
-import ForgottenPassword from "./forgottenPassword/ForgottenPassword";
-import ResetPassword from "./resetPassword/ResetPassword";
 import LogOut from "./logOut/LogOut";
 
 import Create from "./products/create/Create";
@@ -40,10 +38,6 @@ export default function AppRoute() {
 
           {/* Admin */}
           <Route path="/Admin-Log-In" component={Login} />
-          {/* Osäker ifall admin behöver det här 
-          <Route path="/Register" component={Register} />
-          <Route path="/Forgotten-Password" component={ForgottenPassword} />
-          <Route path="/Reset-Password" component={ResetPassword} /> */}
           <Route path="/Admin-Log-Out" component={LogOut} />
 
           <Route path="/Create" component={Create} />

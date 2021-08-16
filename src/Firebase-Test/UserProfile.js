@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Firebase-Test/Auth";
-import { db, Firebase, user } from "../Firebase-Test/FirebaseConfig";
+import { db, Firebase } from "../Firebase-Test/FirebaseConfig";
 import dotenv from "dotenv";
+import { useHistory } from "react-router";
 
 dotenv.config();
 
 function UserProfile() {
+  const history = useHistory();
+
   const { currentUser } = useContext(AuthContext);
   let userID = null;
 
@@ -13,7 +16,6 @@ function UserProfile() {
     userID = currentUser.uid;
   }
 
-  const [loading, setLoading] = useState(true);
   const [UserInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
@@ -30,7 +32,6 @@ function UserProfile() {
         }
 
         setUserInfo(data);
-        setLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -38,26 +39,6 @@ function UserProfile() {
 
     fetchData();
   }, []);
-  /*  useEffect(() => {
-       let userData = {};
-       db.doc(`/users/${userID}`).get()
-       .then(doc =>{
-           if(doc.exists){
-               userData.credentials = doc.data();
-               setUserInfo(userData)
-           } else {
-               // doc.data() will be undefined in this case
-               console.log("No such document!");
-           }
-       }).catch(function(error) {
-           console.log("Error getting document:", error);
-     });
-   },[]);   */
-
-  console.log(userID);
-  console.log(currentUser);
-  console.log(UserInfo.imageUrl);
-  console.log(loading);
 
   function handleProfileUpdate(event) {
     event.preventDefault();
@@ -82,18 +63,16 @@ function UserProfile() {
 
     var uploadTask = storageRef.child(image.name).put(image, metadata);
 
-    // Listen for state changes, errors, and completion of the upload.
     uploadTask.on(
-      Firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+      Firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
         switch (snapshot.state) {
-          case Firebase.storage.TaskState.PAUSED: // or 'paused'
+          case Firebase.storage.TaskState.PAUSED:
             console.log("Upload is paused");
             break;
-          case Firebase.storage.TaskState.RUNNING: // or 'running'
+          case Firebase.storage.TaskState.RUNNING:
             console.log("Upload is running");
             break;
         }
@@ -117,7 +96,7 @@ function UserProfile() {
   }
 
   function uploadImage() {
-    console.log("Hhhaaayyyeee");
+    history.push("/");
   }
 
   function deleteAccount() {
@@ -129,6 +108,7 @@ function UserProfile() {
     //   // ...
     // });
     Firebase.auth().currentUser.delete();
+    history.push("/");
   }
 
   return (
