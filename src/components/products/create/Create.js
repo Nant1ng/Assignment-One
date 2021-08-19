@@ -78,8 +78,8 @@ function Create() {
     const subscriber = db.collection("message").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         getMessages.push({
-          ...doc.data(), //spread operator
-          key: doc.id, // `id` given to us by Firebase
+          ...doc.data(), 
+          key: doc.id, // id from Firebase
         });
       });
       setMessages(getMessages);
