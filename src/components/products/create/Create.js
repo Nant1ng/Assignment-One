@@ -91,6 +91,10 @@ function Create() {
 
   console.log(Messages);
 
+  function deleteMessage(key) {
+    db.collection("message").doc(key).delete()
+  }
+
   return (
     <>
       <div>
@@ -180,6 +184,9 @@ function Create() {
               <p>Name:{Messages.name}</p> 
               <p>Phone:{Messages.phone}</p> 
              <p>Message:{Messages.message}</p>
+             <button 
+             onClick={() => deleteMessage(Messages.key)}
+             >Remove Message</button>
             </div>
           ))
         ) : (

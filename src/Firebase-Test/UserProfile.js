@@ -96,7 +96,9 @@ function UserProfile() {
   }
 
   function uploadImage() {
-    history.push("/");
+    // const res = db.doc(`/users/${userID}`).get();
+    // setUserInfo(res)
+    
   }
 
   function deleteAccount() {
