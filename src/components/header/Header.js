@@ -93,65 +93,58 @@ function Header() {
                   Rent
                 </Link>
               </li>
-              {isLoggedIn ? (
-                <>
-                  <li>
-                    <Link
-                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      to="/My-Purchases"
-                    >
-                      My Purchases
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      //to="/Log-out"
-                      to="/FBLogout"
-                    >
-                      Log out
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                <>
-                <li>
-                    <Link
-                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      //to="/Log-out"
-                      to="/FBLogout"
-                    >
-                      Log out
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      //to="/Log-in"
-                      to="/FBLogin"
-                    >
-                      Log in
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      //to="/Register"
-                      to="/FBSignUp"
-                    >
-                      Register
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
-                      to="/FBProfile"
-                    >
-                     Profil
-                    </Link>
-                  </li>
-                </>
-              )}
+              <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  to="/My-Purchases"
+                >
+                  My Purchases
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  //to="/Log-out"
+                  to="/FBLogout"
+                >
+                  Log out
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  //to="/Log-out"
+                  to="/FBLogout"
+                >
+                  Log out
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  //to="/Log-in"
+                  to="/FBLogin"
+                >
+                  Log in
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  //to="/Register"
+                  to="/FBSignUp"
+                >
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-teal-200 hover:border-teal-200"
+                  to="/FBProfile"
+                >
+                  Profil
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

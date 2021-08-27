@@ -124,6 +124,7 @@ function Card({ productid, title, price, desc, image }) {
         title: title,
         description: desc,
         price: price,
+        imgUrl: `https://glacial-coast-99784.herokuapp.com${image[0].url}`,
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);

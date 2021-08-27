@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import "firebase/firestore";
 import "firebase/storage";
 
-
 dotenv.config();
 
 const FirebaseConfig = firebase.initializeApp({
@@ -20,6 +19,5 @@ const FirebaseConfig = firebase.initializeApp({
 export const db = firebase.firestore();
 export const Firebase = firebase;
 export const user = firebase.auth().currentUser;
-
 
 export default FirebaseConfig;

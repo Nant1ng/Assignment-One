@@ -23,8 +23,6 @@ function UserProfile() {
       try {
         const response = await db.doc(`/users/${userID}`).get();
 
-        console.log("response", response);
-
         let data = { title: "not found" };
 
         if (response.exists) {
@@ -53,9 +51,6 @@ function UserProfile() {
   function imageChangeHandler(event) {
     const image = event.target.files[0];
     var storageRef = Firebase.storage().ref();
-
-    console.log(image);
-    console.log(image.name);
 
     var metadata = {
       contentType: "image/jpeg",
@@ -98,17 +93,9 @@ function UserProfile() {
   function uploadImage() {
     // const res = db.doc(`/users/${userID}`).get();
     // setUserInfo(res)
-    
   }
 
   function deleteAccount() {
-    // user.delete().then(() => {
-    //   // User deleted.
-    //   console.log("Delete User")
-    // }).catch((error) => {
-    //   // An error ocurred
-    //   // ...
-    // });
     Firebase.auth().currentUser.delete();
     history.push("/");
   }

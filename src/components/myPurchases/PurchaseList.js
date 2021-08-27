@@ -1,44 +1,52 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
+import { db } from "../../Firebase-Test/FirebaseConfig";
+import { AuthContext } from "../../Firebase-Test/Auth";
 import MyPurchases from "./MyPurchases";
 
 function PurchaseList() {
   const [products, setProducts] = useState([]);
+  const { currentUser } = useContext(AuthContext);
+
+  let userid = null;
+
+  if (currentUser !== null) {
+    userid = currentUser.uid;
+  }
 
   useEffect(() => {
-    const userid = localStorage.getItem("UserId");
-    const jwt = localStorage.getItem("JWT");
+    const getProducts = [];
+    const subscriber = db
+      .collection("buy")
+      .where("userID", "==", userid)
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getProducts.push({
+            ...doc.data(), //spread operator
+            key: doc.id, // `id` given to us by Firebase
+          });
+        });
+        setProducts(getProducts);
+      });
 
-    const fetchProducts = async () => {
-      const response = await axios.get(
-        `https://glacial-coast-99784.herokuapp.com/buy-checkouts?_where[1][user.id]=${userid}`,
-        // `http://localhost:1337/buy-checkouts?_where[1][user.id]=${userid}`,
-        {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        }
-      );
-      setProducts(response.data);
-      console.log("Checkout Data",response.data);
-    };
-    fetchProducts();
+    // return cleanup function
+    return () => subscriber();
   }, []);
-  return (<div>
-      {products.map((BuyProduct) => {
 
-          return (
-              <MyPurchases 
-              key={BuyProduct.id}
-              productid={BuyProduct.buy_product.id}
-              title={BuyProduct.buy_product.Title}
-              description={BuyProduct.buy_product.Description}
-              price={BuyProduct.buy_product.Price}
-              image={BuyProduct.buy_product.Image}
-              />
-          );
+  return (
+    <>
+      {products.map((product) => {
+        return (
+          <MyPurchases
+            key={product.key}
+            id={product.key}
+            title={product.title}
+            image={product.imgUrl}
+            price={product.price}
+          ></MyPurchases>
+        );
       })}
-  </div>);
+    </>
+  );
 }
 
 export default PurchaseList;

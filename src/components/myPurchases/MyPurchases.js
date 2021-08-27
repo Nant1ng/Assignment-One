@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
+import dotenv from "dotenv";
 
-const stripePromise = loadStripe(
-  "pk_test_51IxA3vG2wXCCEzqBYUxT9lhsHHUy3PJ95WKhuY2Hu7aG1X0QeFYZBcTGbhWkpAWTELN9ykR6F2wHK36PpGqHV6Vr00HbcxXZiw"
-);
+dotenv.config();
 
-function MyPurchases({productid, title, description, image, price}) {
-  console.log(productid)
+const stripePromise = loadStripe(process.env.React_App_Stripe_PK);
+
+function MyPurchases({ id, title, image, price }) {
   const handleClick = async (event) => {
     // Get Stripe.js instance
     const stripe = await stripePromise;
@@ -17,8 +17,8 @@ function MyPurchases({productid, title, description, image, price}) {
     //   method: "POST",
     // });
     const response = await axios.post(
-      "http://localhost:4242/create-checkout-session", 
-      {name:title, price:price}
+      "http://localhost:4242/create-checkout-session",
+      { name: title, price: price }
     );
 
     const sessionId = await response.data.id;
@@ -37,17 +37,16 @@ function MyPurchases({productid, title, description, image, price}) {
 
   return (
     <div className="overflow-hidden">
-      <div className="flex justify-center" id={productid}>
+      <div className="flex justify-center" key={id}>
         <div className=" max-w-xs bg-white shadow-lg rounded-lg my-10 ">
           <div className="px-4 py-2">
             <h1 className="text-gray-900 font-bold text-3xl uppercase">
               {title}
             </h1>
-            <p className="text-gray-600 text-sm mt-1">{description}</p>
           </div>
           <img
             className="h-56 w-full object-cover mt-2"
-           // src={`http://localhost:1337${productid.image[0].url}`}
+            // src={`http://localhost:1337${productid.image[0].url}`}
             src={`https://glacial-coast-99784.herokuapp.com${image[0].url}`}
             alt="Buildings"
           />
